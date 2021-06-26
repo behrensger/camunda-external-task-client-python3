@@ -21,7 +21,6 @@ class ExternalTaskClient:
         "retryTimeout": 300000,
         "httpTimeoutMillis": 30000,
         "timeoutDeltaMillis": 5000,
-        "includeExtensionProperties": True
     }
 
     def __init__(self, worker_id, engine_base_url=ENGINE_LOCAL_BASE_URL, config=None):
@@ -67,10 +66,7 @@ class ExternalTaskClient:
             topics.append({
                 "topicName": topic,
                 "lockDuration": self.config["lockDuration"],
-                "processVariables": process_variables if process_variables else {},
-                "includeExtensionProperties": self.config["includeExtensionProperties"]
-                if "includeExtensionProperties" in self.config else False
-
+                "processVariables": process_variables if process_variables else {}
             })
         return topics
 
